@@ -20,12 +20,28 @@ export const highlightedStateTrigger = trigger('highlightedState', [
   //Estado void
   //Nesses casos o Angular disponibiliza um estado chamado void, é uma palavra reservada que, em português, 
   //significa "vazio". Serve para indicar que o elemento não tem estado nenhum.
+//   export const showStateTrigger = trigger('shownState', [
+
+//     transition('void => *', [
+//         style({
+//             opacity: 0
+//         }),
+//         animate(300, style({
+//             opacity: 1
+//         }))
+//     ]),
+//     transition('* => void', [
+//         animate(300, style({
+//             opacity: 0
+//         }))
+//     ])
+
+//   ])
+
+//abaixo uma refatoração do codigo comentado acima
   export const showStateTrigger = trigger('shownState', [
 
-    state('shown', style({
-
-    })),
-    transition('void => shown', [
+    transition(':enter', [
         style({
             opacity: 0
         }),
@@ -33,7 +49,7 @@ export const highlightedStateTrigger = trigger('highlightedState', [
             opacity: 1
         }))
     ]),
-    transition('shown => void', [
+    transition(':leave', [
         animate(300, style({
             opacity: 0
         }))
